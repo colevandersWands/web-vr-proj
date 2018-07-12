@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>threejs - geometry</title>
+
+    <style>
+    	body{
+    		margin: 0;
+    		overflow: hidden;
+    	}
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script src="../three.js"></script>
+    <script src="https://cdn.rawgit.com/chandlerprall/ThreeCSG/master/ThreeCSG.js"></script>
+
+
+    <script>
+
+    var renderer,
+    	scene,
+    	camera,
+    	myCanvas = document.getElementById('myCanvas');
+
+
+    //RENDERER
+    renderer = new THREE.WebGLRenderer({canvas: myCanvas, antialias: true});
+    renderer.setClearColor(0x000000);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    //CAMERA
+    camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+
+    //SCENE
+    scene = new THREE.Scene();
+
+    //LIGHTS
+    var light = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(light);
+
+    var light2 = new THREE.PointLight(0xffffff, 0.5);
+    scene.add(light2);
+
+
+    var geometry = new THREE.PlaneGeometry(100, 100);  
+    						  //PlaneGeometry(width, height, widthSegments, heightSegments)
+
+    // var geometry = new THREE.BoxGeometry(100, 100, 100);
+
+    // var geometry = new THREE.SphereGeometry(50, 10, 10);  
+    						  //SphereGeometry(radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
+
+    // var geometry = new THREE.CircleGeometry(100, 100);   
+    						  //CircleGeometry(radius, segments, thetaStart, thetaLength)
+
+    // var geometry = new THREE.ConeGeometry(100, 100, 100);  
+    						  //ConeGeometry(radius, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
+
+    // var geometry = new THREE.CylinderGeometry(100, 100, 100);  
+    						  //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
+
+    // var geometry = new THREE.DodecahedronGeometry(100, 0);  
+    						  //DodecahedronGeometry(radius, detail)
+
+    // var geometry = new THREE.IcosahedronGeometry(100, 0);  
+    						  //IcosahedronGeometry(radius, detail)
+
+    // var geometry = new THREE.OctahedronGeometry(100, 0);  
+						      //OctahedronGeometry(radius, detail)
+
+    // var geometry = new THREE.RingGeometry(50, 100, 32);  
+    						  //RingGeometry(innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength)
+
+    // var geometry = new THREE.TetrahedronGeometry(100, 0);  
+    						  //TetrahedronGeometry(radius, detail)
+
+    // var geometry = new THREE.TorusGeometry(100, 30, 16, 100);  
+    						  //TorusGeometry(radius, tube, radialSegments, tubularSegments, arc)
+
+    // var geometry = new THREE.TorusKnotGeometry(100, 30, 100, 100);  
+    						  //TorusKnotGeometry(radius, tube, tubularSegments, radialSegments, p, q)
+
+ 
+    var material = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
+    var mesh = new THREE.Mesh(geometry, material);
+    mesh.position.z = -100;
+
+    scene.add(mesh);
+
+
+    //RENDER LOOP
+    render();
+
+    function render() {
+    	mesh.rotation.x += 0.01;
+    	mesh.rotation.y += 0.01;
+
+    	renderer.render(scene, camera);
+
+    	requestAnimationFrame(render);
+    }
+
+    </script>
+</body>
+</html>

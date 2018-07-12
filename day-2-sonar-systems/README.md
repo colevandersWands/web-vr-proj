@@ -1,0 +1,1 @@
+follow [this tutorial series](https://www.youtube.com/watch?v=YKzyhcyAijo&list=PLRtjMdoYXLf6mvjCmrltvsD0j12ZQDMfE&index=1).  put the code you make for each one in a folder in this folder.  make this all navigable from the main index
